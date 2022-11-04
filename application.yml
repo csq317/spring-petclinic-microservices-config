@@ -26,7 +26,18 @@ server:
 #       ddl-auto: none
 #   jmx:
 #     enabled: true
-
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  datasource:
+    schema: classpath*:db/mysql/schema.sql
+    data: classpath*:db/mysql/data.sql
+    url: jdbc:mysql://petclinicdb.mysql.database.azure.com:3306/petclinic?serverTimezone=UTC&sslmode=required
+    username: myroot
+    password: Sq123456
+    initialization-mode: ALWAYS
+    
 # Spring Boot 1.5 makes actuator secure by default
 management.security.enabled: false
 # Enable all Actuators and not only the two available by default /health and /info starting Spring Boot 2.0

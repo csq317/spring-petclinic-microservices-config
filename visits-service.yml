@@ -1,2 +1,2 @@
 ﻿spring:
-  profiles: mysql
+  profiles: default

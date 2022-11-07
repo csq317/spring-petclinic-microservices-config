@@ -92,19 +92,19 @@ spring:
   datasource:
     schema: classpath*:db/mysql/schema.sql
     data: classpath*:db/mysql/data.sql
-    url: jdbc:mysql://petclinicdb.mysql.database.azure.com:3306/petclinic?serverTimezone=UTC&sslmode=required
-    username: myroot
-    password: Sq123456
+    url: jdbc:mysql://${MYSQL_SERVER_FULL_NAME}:3306/${MYSQL_DATABASE_NAME}?useSSL=false
+    username: ${MYSQL_SERVER_ADMIN_LOGIN_NAME}
+    password: ${MYSQL_SERVER_ADMIN_PASSWORD}
     initialization-mode: ALWAYS
 
 ---
 spring:
   profiles: key-vault
 
-MYSQL_SERVER_FULL_NAME: ${MYSQL-SERVER-FULL-NAME}
-MYSQL_DATABASE_NAME: ${MYSQL-DATABASE-NAME}
-MYSQL_SERVER_ADMIN_LOGIN_NAME: ${MYSQL-SERVER-ADMIN-LOGIN-NAME}
-MYSQL_SERVER_ADMIN_PASSWORD: ${MYSQL-SERVER-ADMIN-PASSWORD}
+MYSQL_SERVER_FULL_NAME: 20.169.156.3
+MYSQL_DATABASE_NAME: petclinic
+MYSQL_SERVER_ADMIN_LOGIN_NAME: root
+MYSQL_SERVER_ADMIN_PASSWORD: 123456
 
 azure:
   keyvault:

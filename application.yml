@@ -7,37 +7,26 @@ server:
   shutdown: graceful
 
 # embedded database init, supports mysql too trough the 'mysql' spring profile
-# spring:
-#   datasource:
-#     schema: classpath*:db/hsqldb/schema.sql
-#     data: classpath*:db/hsqldb/data.sql
-#   sleuth:
-#     sampler:
-#       probability: 1.0
-#   cloud:
-#     config:
-#       # Allow the microservices to override the remote properties with their own System properties or config file
-#       allow-override: true
-#       # Override configuration with any local property source
-#       override-none: true
-#   jpa:
-#     open-in-view: false
-#     hibernate:
-#       ddl-auto: none
-#   jmx:
-#     enabled: true
 spring:
-  config:
-    activate:
-      on-profile: mysql
   datasource:
-    schema: classpath*:db/mysql/schema.sql
-    data: classpath*:db/mysql/data.sql
-    url: jdbc:mysql://petclinicdb.mysql.database.azure.com:3306/petclinic?serverTimezone=UTC&sslmode=required
-    username: myroot
-    password: Sq123456
-    initialization-mode: ALWAYS
-    
+    schema: classpath*:db/hsqldb/schema.sql
+    data: classpath*:db/hsqldb/data.sql
+  sleuth:
+    sampler:
+      probability: 1.0
+  cloud:
+    config:
+      # Allow the microservices to override the remote properties with their own System properties or config file
+      allow-override: true
+      # Override configuration with any local property source
+      override-none: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+  jmx:
+    enabled: true
+
 # Spring Boot 1.5 makes actuator secure by default
 management.security.enabled: false
 # Enable all Actuators and not only the two available by default /health and /info starting Spring Boot 2.0
